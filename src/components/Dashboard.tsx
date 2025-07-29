@@ -43,7 +43,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser, modules }) =>
   ];
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-8">
+    <div className="max-w-7xl mx-auto p-6 pb-24 space-y-8">
       {/* Welcome Section */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary">
