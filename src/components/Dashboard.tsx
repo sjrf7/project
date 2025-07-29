@@ -55,7 +55,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser, modules }) =>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
           <div key={index} className="glass-card glass-card-hover rounded-2xl p-6 stat-card">
             <div className="flex items-center justify-between mb-4">
