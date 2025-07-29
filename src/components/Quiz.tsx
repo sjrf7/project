@@ -18,14 +18,23 @@ export const Quiz: React.FC<QuizProps> = ({ module, onComplete, onBack }) => {
   const question = questions[currentQuestion];
 
   const handleAnswerSelect = (answerIndex: number) => {
+    if (showResult) {
+      // Prevent changing answer after verification
+      return;
+    }
     const newAnswers = [...selectedAnswers];
     newAnswers[currentQuestion] = answerIndex;
     setSelectedAnswers(newAnswers);
   };
 
   const handleNext = () => {
+    if (selectedAnswers[currentQuestion] === undefined) {
+      // Do not proceed if no answer selected
+      return;
+    }
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+      setShowResult(false); // Reset showResult for next question
     } else {
       // Calcular puntuación final
       const correctAnswers = selectedAnswers.reduce((acc, answer, index) => {
