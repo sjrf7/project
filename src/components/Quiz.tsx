@@ -94,16 +94,16 @@ export const Quiz: React.FC<QuizProps> = ({ module, onComplete, onBack }) => {
             </div>
           )}
 
-          <div className="space-x-4">
+          <div className="flex flex-col items-center space-y-4">
             <button
               onClick={onBack}
-            className="px-8 py-3 bg-[#0a0a0a] text-white rounded-xl hover-lift font-medium"
+              className="w-48 px-8 py-3 bg-[#0a0a0a] text-white rounded-xl hover-lift font-medium text-center"
             >
               Volver a Módulos
             </button>
             <button
               onClick={handleFinish}
-              className="px-8 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 text-white rounded-xl hover-lift font-bold crypto-glow"
+              className="w-48 px-8 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 text-white rounded-xl hover-lift font-bold crypto-glow text-center"
             >
               Continuar
             </button>
