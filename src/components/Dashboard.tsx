@@ -73,7 +73,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser, modules }) =>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Learning Progress */}
         <div className="lg:col-span-2 glass-card glass-card-hover rounded-2xl p-6">
           <div className="flex items-center justify-between mb-6">
@@ -127,74 +127,74 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser, modules }) =>
           </div>
         </div>
 
-        {/* Recent NFTs & Achievements */}
-        <div className="space-y-6">
-          {/* Recent NFTs */}
-          <div className="glass-card glass-card-hover rounded-2xl p-6">
-            <h3 className="text-xl font-bold text-white mb-4">Recent NFTs</h3>
-            {currentUser.nfts.length > 0 ? (
-              <div className="space-y-4">
-                {currentUser.nfts.slice(-2).map((nft: any) => (
-                  <div key={nft.id} className="flex items-center space-x-4 p-3 bg-white/5 rounded-xl">
-                    <div className="text-3xl">{nft.image}</div>
-                    <div className="flex-1">
-                      <p className="font-semibold text-white text-sm">{nft.name}</p>
-                      <p className="text-xs text-gray-400">{nft.description}</p>
-                      <div className={`inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium ${
-                        nft.rarity === 'common' ? 'rarity-common text-white' :
-                        nft.rarity === 'rare' ? 'rarity-rare text-white' :
-                        nft.rarity === 'epic' ? 'rarity-epic text-white' :
-                        'rarity-legendary text-white'
-                      }`}>
-                        {nft.rarity}
+          {/* Recent NFTs & Achievements */}
+          <div className="space-y-6">
+            {/* Recent NFTs */}
+            <div className="glass-card glass-card-hover rounded-2xl p-6 hidden md:block">
+              <h3 className="text-xl font-bold text-white mb-4">Recent NFTs</h3>
+              {currentUser.nfts.length > 0 ? (
+                <div className="space-y-4">
+                  {currentUser.nfts.slice(-2).map((nft: any) => (
+                    <div key={nft.id} className="flex items-center space-x-4 p-3 bg-white/5 rounded-xl">
+                      <div className="text-3xl">{nft.image}</div>
+                      <div className="flex-1">
+                        <p className="font-semibold text-white text-sm">{nft.name}</p>
+                        <p className="text-xs text-gray-400">{nft.description}</p>
+                        <div className={`inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium ${
+                          nft.rarity === 'common' ? 'rarity-common text-white' :
+                          nft.rarity === 'rare' ? 'rarity-rare text-white' :
+                          nft.rarity === 'epic' ? 'rarity-epic text-white' :
+                          'rarity-legendary text-white'
+                        }`}>
+                          {nft.rarity}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-6">
-                <div className="text-4xl mb-2">🏆</div>
-                <p className="text-sm text-gray-400">Complete modules to earn NFTs</p>
-              </div>
-            )}
-          </div>
-
-          {/* Quick Actions */}
-          <div className="glass-card glass-card-hover rounded-2xl p-6">
-            <h3 className="text-xl font-bold text-white mb-4">Quick Actions</h3>
-            <div className="space-y-3">
-              <button className="w-full btn-primary text-white py-3 px-4 rounded-xl font-medium text-sm">
-                Continue Learning
-              </button>
-              <button className="w-full btn-secondary text-white py-3 px-4 rounded-xl font-medium text-sm">
-                Join Community Chat
-              </button>
-              <button className="w-full btn-secondary text-white py-3 px-4 rounded-xl font-medium text-sm">
-                View Leaderboard
-              </button>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-6">
+                  <div className="text-4xl mb-2">🏆</div>
+                  <p className="text-sm text-gray-400">Complete modules to earn NFTs</p>
+                </div>
+              )}
             </div>
-          </div>
 
-          {/* Community Stats */}
-          <div className="glass-card glass-card-hover rounded-2xl p-6">
-            <h3 className="text-xl font-bold text-white mb-4">Community</h3>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-400">Active Users</span>
-                <span className="text-sm font-bold text-green-400">1,247</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-400">Your Country Rank</span>
-                <span className="text-sm font-bold text-[#78dbe2]">#12</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-400">LATAM Rank</span>
-                <span className="text-sm font-bold text-[#ff77c6]">#156</span>
+            {/* Quick Actions */}
+            <div className="glass-card glass-card-hover rounded-2xl p-6">
+              <h3 className="text-xl font-bold text-white mb-4">Quick Actions</h3>
+              <div className="space-y-3">
+                <button className="w-full btn-primary text-white py-3 px-4 rounded-xl font-medium text-sm">
+                  Continue Learning
+                </button>
+                <button className="w-full btn-secondary text-white py-3 px-4 rounded-xl font-medium text-sm">
+                  Join Community Chat
+                </button>
+                <button className="w-full btn-secondary text-white py-3 px-4 rounded-xl font-medium text-sm">
+                  View Leaderboard
+                </button>
               </div>
             </div>
+
+            {/* Community Stats */}
+            <div className="glass-card glass-card-hover rounded-2xl p-6 hidden md:block">
+              <h3 className="text-xl font-bold text-white mb-4">Community</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-400">Active Users</span>
+                  <span className="text-sm font-bold text-green-400">1,247</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-400">Your Country Rank</span>
+                  <span className="text-sm font-bold text-[#78dbe2]">#12</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-400">LATAM Rank</span>
+                  <span className="text-sm font-bold text-[#ff77c6]">#156</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
       </div>
     </div>
   );
