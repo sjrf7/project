@@ -8,7 +8,7 @@ interface ModulesListProps {
 
 export const ModulesList: React.FC<ModulesListProps> = ({ modules, onStartModule }) => {
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-8">
+    <div className="max-w-6xl mx-auto p-6 pb-24 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary">

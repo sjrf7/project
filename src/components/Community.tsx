@@ -85,7 +85,7 @@ export const Community: React.FC<CommunityProps> = ({ regionalUsers, currentUser
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-6 pb-24">
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-white mb-2">Comunidad Crypto LATAM</h2>
         <p className="text-white">Conecta con otros entusiastas crypto de tu región</p>

@@ -105,7 +105,7 @@ export const Quiz: React.FC<QuizProps> = ({ module, onComplete, onBack }) => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-8">
+    <div className="max-w-7xl mx-auto p-6 pb-24 space-y-8">
       <div className="mb-6">
         <button
           onClick={onBack}

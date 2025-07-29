@@ -27,7 +27,7 @@ export const Profile: React.FC<ProfileProps> = ({ currentUser }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 text-white">
+    <div className="max-w-4xl mx-auto p-6 pb-24 text-white">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Información del perfil */}
         <div className="lg:col-span-1">
