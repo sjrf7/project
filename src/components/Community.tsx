@@ -35,9 +35,10 @@ export const Community: React.FC<CommunityProps> = ({ regionalUsers, currentUser
   ];
   const countries = ['all', ...latinAmericanCountries];
   
-  const filteredUsers = selectedCountry === 'all' 
+  const filteredUsers = (selectedCountry === 'all' 
     ? regionalUsers 
-    : regionalUsers.filter(user => user.country === selectedCountry);
+    : regionalUsers.filter(user => user.country === selectedCountry)
+  ).slice().sort((a, b) => b.level - a.level);
 
   const getCountryFlag = (country: string) => {
     const countryCodes: { [key: string]: string } = {
@@ -95,21 +96,21 @@ export const Community: React.FC<CommunityProps> = ({ regionalUsers, currentUser
         {/* Lista de usuarios */}
         <div className="lg:col-span-2">
           <div className="glass-card glass-card-hover rounded-2xl p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-white">Usuarios Activos</h3>
-              <select
-                value={selectedCountry}
-                onChange={(e) => setSelectedCountry(e.target.value)}
-                className="border border-gray-300 rounded-lg px-3 py-2 text-white bg-gray-700"
-              >
-                <option value="all">Todos los países</option>
-                {countries.slice(1).map((country) => (
-                  <option key={country} value={country}>
-                    {getCountryFlag(country)} {country}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl font-bold text-white">Usuarios Top</h3>
+            <select
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
+              className="border border-gray-300 rounded-lg px-3 py-2 text-white bg-gray-700"
+            >
+              <option value="all">Todos los países</option>
+              {countries.slice(1).map((country) => (
+                <option key={country} value={country}>
+                  {getCountryFlag(country)} {country}
+                </option>
+              ))}
+            </select>
+          </div>
 
             <div className="space-y-4">
               {filteredUsers.map((user) => (
@@ -118,14 +119,12 @@ export const Community: React.FC<CommunityProps> = ({ regionalUsers, currentUser
                   className="flex items-center justify-between p-6 glass-card glass-card-hover rounded-2xl"
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="relative">
-                      <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
-                        {user.username[0].toUpperCase()}
+                      <div className="relative">
+                        <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+                          {user.username[0].toUpperCase()}
+                        </div>
+                        {/* Removed active status circle */}
                       </div>
-                      <div className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white ${
-                        user.isOnline ? 'bg-green-500' : 'bg-gray-400'
-                      }`}></div>
-                    </div>
                     
                     <div>
                       <div className="flex items-center space-x-2">
@@ -170,7 +169,7 @@ export const Community: React.FC<CommunityProps> = ({ regionalUsers, currentUser
         {/* Panel lateral */}
         <div className="space-y-6">
           {/* Estadísticas */}
-          <div className="glass-card glass-card-hover rounded-2xl p-6">
+          <div className="glass-card glass-card-hover rounded-2xl p-6 hidden md:block">
                 <h3 className="text-xl font-bold text-white mb-4">Estadísticas Regionales</h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">

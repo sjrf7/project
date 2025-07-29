@@ -107,13 +107,7 @@ export const Quiz: React.FC<QuizProps> = ({ module, onComplete, onBack }) => {
   return (
     <div className="max-w-7xl mx-auto p-6 pb-24 space-y-8">
       <div className="mb-6">
-        <button
-          onClick={onBack}
-          className="text-cyan-400 hover:text-cyan-300 mb-4 font-medium"
-        >
-          ← Volver a Módulos
-        </button>
-        
+        {/* Removed back to modules button as requested */}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-3xl font-bold text-white">{module.title}</h2>
           <span className="text-sm text-cyan-300 font-medium">
