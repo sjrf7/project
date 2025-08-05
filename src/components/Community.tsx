@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { MapPin, MessageCircle, Star, Users } from 'lucide-react';
+import { MapPin, Star } from 'lucide-react';
 import { RegionalUser } from '../types';
 
 interface CommunityProps {
   regionalUsers: RegionalUser[];
-  currentUser: any;
 }
 
-export const Community: React.FC<CommunityProps> = ({ regionalUsers, currentUser }) => {
+export const Community: React.FC<CommunityProps> = ({ regionalUsers }) => {
   const [selectedCountry, setSelectedCountry] = useState<string>('all');
-  const [activeChat, setActiveChat] = useState<string | null>(null);
 
   const latinAmericanCountries = [
     'México',
@@ -154,12 +152,7 @@ export const Community: React.FC<CommunityProps> = ({ regionalUsers, currentUser
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => setActiveChat(user.id)}
-                    className="p-2 text-purple-600 hover:bg-purple-100 rounded-lg transition-colors"
-                  >
-                    <MessageCircle className="w-5 h-5" />
-                  </button>
+                  {/* Chat button removed */}
                 </div>
               ))}
             </div>
@@ -191,7 +184,7 @@ export const Community: React.FC<CommunityProps> = ({ regionalUsers, currentUser
           <div className="glass-card glass-card-hover rounded-2xl p-6">
                 <h3 className="text-xl font-bold text-white mb-4">Top Países</h3>
 <div className="space-y-3 max-h-96 overflow-y-auto scrollbar-thin scrollbar-transparent scrollbar-track-transparent pr-4">
-              {countries.slice(1).map((country, index) => {
+              {countries.slice(1).map((country) => {
                 const countryUsers = regionalUsers.filter(u => u.country === country);
                 const avgLevel = countryUsers.reduce((acc, u) => acc + u.level, 0) / countryUsers.length;
                 
@@ -212,24 +205,7 @@ export const Community: React.FC<CommunityProps> = ({ regionalUsers, currentUser
             </div>
           </div>
 
-          {/* Chat rápido */}
-          {activeChat && (
-            <div className="glass-card glass-card-hover rounded-2xl p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">Chat</h3>
-                <button
-                  onClick={() => setActiveChat(null)}
-                className="text-white hover:text-gray-300"
-                >
-                  ✕
-                </button>
-              </div>
-              <div className="text-center py-4">
-                <div className="text-4xl mb-2">💬</div>
-                <p className="text-white">Función de chat próximamente disponible</p>
-              </div>
-            </div>
-          )}
+          {/* Chat functionality removed */}
         </div>
       </div>
     </div>

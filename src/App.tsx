@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Header } from './components/Header';
 import { Dashboard } from './components/Dashboard';
 import { ModulesList } from './components/ModulesList';
@@ -7,11 +7,11 @@ import { Community } from './components/Community';
 import { Profile } from './components/Profile';
 import { modules } from './data/modules';
 import { regionalUsers } from './data/regionalUsers';
-import { User, Module } from './types';
+import { User } from './types';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [currentQuiz, setCurrentQuiz] = useState<string | null>(null);
+  const [currentQuiz, setCurrentQuiz] = useState<string>('');
   
   const [currentUser, setCurrentUser] = useState<User>({
     id: '1',
@@ -47,6 +47,7 @@ function App() {
   };
 
   const handleQuizComplete = (score: number) => {
+    if (!currentQuiz) return;
     const module = moduleData.find(m => m.id === currentQuiz);
     if (!module) return;
 
@@ -68,7 +69,7 @@ function App() {
       // Actualizar usuario
       const updatedUser = {
         ...currentUser,
-        completedModules: [...currentUser.completedModules, currentQuiz],
+        completedModules: [...currentUser.completedModules.filter(Boolean), currentQuiz],
         nfts: [...currentUser.nfts, { ...module.nftReward, mintDate: new Date().toISOString().split('T')[0] }],
         xp: currentUser.xp + 100,
         level: Math.floor((currentUser.xp + 100) / 250) + 1
@@ -77,13 +78,13 @@ function App() {
       setCurrentUser(updatedUser);
     }
 
-    setCurrentQuiz(null);
+    setCurrentQuiz('');
     setActiveTab('modules');
   };
 
   const handleSetActiveTab = (tab: string) => {
     setActiveTab(tab);
-    setCurrentQuiz(null);
+    setCurrentQuiz('');
   };
 
   if (currentQuiz) {
@@ -94,7 +95,7 @@ function App() {
         <Quiz 
           module={module} 
           onComplete={handleQuizComplete}
-          onBack={() => setCurrentQuiz(null)}
+          onBack={() => setCurrentQuiz('')}
         />
       </div>
     );
@@ -113,7 +114,7 @@ function App() {
       )}
       
       {activeTab === 'community' && (
-        <Community regionalUsers={regionalUsers} currentUser={currentUser} />
+        <Community regionalUsers={regionalUsers} />
       )}
       
       {activeTab === 'profile' && (

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Trophy, Star, Users, Target, TrendingUp, Award, Clock, Zap } from 'lucide-react';
+import { Star, Target, TrendingUp, Award, Clock, Zap } from 'lucide-react';
+import { useEthersWallet } from '../hooks/useEthersWallet';
 
 interface DashboardProps {
   currentUser: any;
@@ -7,6 +8,8 @@ interface DashboardProps {
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({ currentUser, modules }) => {
+  useEthersWallet();
+
   const completedModules = modules.filter(m => m.isCompleted).length;
   const totalModules = modules.length;
   const progress = (completedModules / totalModules) * 100;
@@ -47,7 +50,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser, modules }) =>
       {/* Welcome Section */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary">
-          Welcome back, {currentUser.username}!
+          Bienvenido, {currentUser.username}!
         </h1>
         <p className="text-lg text-gray-400 max-w-2xl mx-auto">
           Continue your crypto journey and connect with the LATAM community
