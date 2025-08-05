@@ -174,10 +174,10 @@ export const Header: React.FC<HeaderProps> = ({ currentUser, activeTab, setActiv
                 {showWalletOptions && (
                   <div
                     ref={walletOptionsRef}
-                    className="absolute top-full right-0 mt-2 w-80 bg-gradient-to-br from-gray-900/90 via-gray-900/80 to-gray-900/90 backdrop-blur-md rounded-2xl p-5 shadow-lg z-50 border border-gray-700"
+                    className="absolute top-full right-1/2 translate-x-1/2 mt-2 w-80 bg-gradient-to-br from-gray-900/90 via-gray-900/80 to-gray-900/90 backdrop-blur-md rounded-2xl p-5 shadow-lg z-50 border border-gray-700"
                     style={{ animation: 'fadeInScale 0.3s ease forwards' }}
                   >
-                    <h3 className="text-white font-bold text-lg mb-5 tracking-wide">Select Wallet</h3>
+                    <h3 className="text-white font-bold text-lg mb-5 tracking-wide text-center">Select Wallet</h3>
                     <div className="flex flex-col space-y-4">
                       <button
                         onClick={handleConnectMetaMask}
