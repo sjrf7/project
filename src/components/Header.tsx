@@ -152,14 +152,14 @@ export const Header: React.FC<HeaderProps> = ({ currentUser, activeTab, setActiv
                 <button
                   onClick={handleWalletAction}
                   disabled={isConnecting}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl font-medium text-sm transition-all ${
+                  className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 rounded-xl font-medium text-sm transition-all ${
                     isConnected
                       ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                       : 'btn-secondary hover:bg-white/10'
                   } ${isConnecting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   <Wallet className="w-4 h-4" />
-                  <span>
+                  <span className="hidden sm:inline">
                     {isConnecting 
                       ? 'Connecting...' 
                       : isConnected 
@@ -167,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({ currentUser, activeTab, setActiv
                         : 'Connect Wallet'
                     }
                   </span>
-                  {!isConnected && <ChevronDown className="w-4 h-4" />}
+                  {!isConnected && <ChevronDown className="w-4 h-4 hidden sm:inline" />}
                 </button>
 
                 {/* Wallet Options Modal */}
